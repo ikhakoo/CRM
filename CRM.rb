@@ -2,7 +2,7 @@
 require_relative 'contact.rb'
 require_relative 'rolodex.rb'
 
-class CRM
+class CRM # view
 
   def self.run
     my_crm = new
@@ -70,19 +70,19 @@ class CRM
       puts "[4] Notes"
       print "Enter your selection: "
       user_option = gets.chomp.to_i
-        if user_option == 1
-          puts "Enter the first name: "
-          contact.first_name = gets.chomp
-        elsif user_option == 2
-          puts "Enter the last name: "
-          contact.last_name = gets.chomp
-        elsif user_option == 3
-          puts "Enter the E-Mail: "
-          contact.email = gets.chomp
-        elsif user_option == 4
-          puts "Enter the Notes: "
-          contact.note = gets.chomp
-        end
+      if user_option == 1
+        puts "Enter the first name: "
+        contact.first_name = gets.chomp
+      elsif user_option == 2
+        puts "Enter the last name: "
+        contact.last_name = gets.chomp
+      elsif user_option == 3
+        puts "Enter the E-Mail: "
+        contact.email = gets.chomp
+      elsif user_option == 4
+        puts "Enter the Notes: "
+        contact.note = gets.chomp
+      end
     elsif user_choice.downcase == "n"
         main_menu
 
@@ -90,11 +90,37 @@ class CRM
 
   end
 
+  def delete_contact #3
+    print "Enter the ID of the user you would like to delete: "
+    contact_id = gets.chomp.to_i
+    contact = @rolodex.find(contact_id)
+    puts contact
+    print "Is this the correct contact (y/n)? "
+    user_choice = gets.chomp
+    if user_choice.downcase == "y"
+      @rolodex.delete_contact(contact)
+      puts "The user has been deleted"
+    else
+      main_menu
+    end
+  end
+
   def display_contact #4
     print "Enter the ID of the user you would like to find: "
     contact_id = gets.chomp.to_i
     contact = @rolodex.find(contact_id)
-    puts contact.to_s
+    puts contact
+    main_menu
+  end
+
+  def display_by_attribute
+    puts "What would you like to display by?"
+    puts "[1] First Name"
+    puts "[2] Last Name"
+    puts "[3] E-Mail"
+    puts "[4] Notes"
+    user_choice = gets.chomp.to_i
+    @rolodex.display(user_choice)
     main_menu
   end
 end

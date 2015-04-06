@@ -1,4 +1,4 @@
-class Contact
+class Contact # model
 
 	attr_accessor :first_name, :last_name, :email, :note, :id
 
@@ -10,9 +10,9 @@ class Contact
 	end
 
 	def to_s
-		print "First Name: #{@first_name}"
-		print "Last Name: #{@last_name}"
-		print "Email: #{@email}"
-		print "Notes: #{@note}"
+		 	print "First Name: #{@first_name} "
+			print "Last Name: #{@last_name} "
+			print "Email: #{@email} "
+			print "Notes: #{@note} "
 	end
 end
