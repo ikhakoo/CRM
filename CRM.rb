@@ -125,13 +125,13 @@ class CRM # view
     @rolodex.contacts.each do |contact|
       case user_choice
       when 1
-        puts contact.first_name
+        puts "First Name: #{contact.first_name}"
       when 2
-        puts contact.last_name
+        puts "Last Name: #{contact.last_name}"
       when 3
-        puts contact.email
+        puts "E-Mail: #{contact.email}"
       when 4
-        puts contact.note
+        puts "First Name: #{contact.note}"
       end
     end
 
