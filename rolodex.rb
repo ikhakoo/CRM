@@ -17,4 +17,13 @@ class Rolodex
 		end
 	end
 
+	def modify(contact_id)
+		@contacts.find do |contact|
+			contact.id == contact_id
+		end
+	end
+
+
+
+
 end

@@ -19,7 +19,7 @@ class CRM
     puts "[1] Add a new contact"
     puts "[2] Modify an existing contact"
     puts "[3] Delete a contact"
-    puts "[4] Display all the contacts"
+    puts "[4] Display a contact"
     puts "[5] Display an attribute"
     puts "[6] Exit"
   end
@@ -41,7 +41,7 @@ class CRM
     end
   end
 
-  def add_new_contact
+  def add_new_contact #1
     print "First Name: "
     first_name = gets.chomp
     print "Last Name: "
@@ -55,7 +55,42 @@ class CRM
     main_menu
   end 
 
-  def display_contact
+  def modify_contact #2
+    print "Enter the ID of the user you would like to modify: "
+    contact_id = gets.chomp.to_i
+    contact = @rolodex.find(contact_id)
+    puts contact.to_s
+    print "Is this the correct contact (y/n)? "
+    user_choice = gets.chomp
+    if user_choice.downcase == "y"
+      puts "What would you like to change?"
+      puts "[1] First Name"
+      puts "[2] Last Name"
+      puts "[3] E-Mail"
+      puts "[4] Notes"
+      print "Enter your selection: "
+      user_option = gets.chomp.to_i
+        if user_option == 1
+          puts "Enter the first name: "
+          contact.first_name = gets.chomp
+        elsif user_option == 2
+          puts "Enter the last name: "
+          contact.last_name = gets.chomp
+        elsif user_option == 3
+          puts "Enter the E-Mail: "
+          contact.email = gets.chomp
+        elsif user_option == 4
+          puts "Enter the Notes: "
+          contact.note = gets.chomp
+        end
+    elsif user_choice.downcase == "n"
+        main_menu
+
+    end 
+
+  end
+
+  def display_contact #4
     print "Enter the ID of the user you would like to find: "
     contact_id = gets.chomp.to_i
     contact = @rolodex.find(contact_id)
