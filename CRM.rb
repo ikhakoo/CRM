@@ -11,6 +11,7 @@ class CRM # view
 
   def initialize
     @rolodex = Rolodex.new
+    @rolodex.add_contact(Contact.new("Bob", "Jones", "bobjones@ocp.com", "Vice President"))
   end
 
   def print_main_menu
@@ -120,7 +121,20 @@ class CRM # view
     puts "[3] E-Mail"
     puts "[4] Notes"
     user_choice = gets.chomp.to_i
-    @rolodex.display(user_choice)
+
+    @rolodex.contacts.each do |contact|
+      case user_choice
+      when 1
+        puts contact.first_name
+      when 2
+        puts contact.last_name
+      when 3
+        puts contact.email
+      when 4
+        puts contact.note
+      end
+    end
+
     main_menu
   end
 end

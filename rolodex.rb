@@ -1,5 +1,7 @@
 class Rolodex # controller
 
+	attr_reader :contacts	
+
 	def initialize
 		@contacts = []
 		@id = 1000
@@ -21,15 +23,5 @@ class Rolodex # controller
 			@contacts.delete(contact)
 			# @contact.delete_if { |contact| contact.id == contact_id }
 	end
-
-	def display(selection)
-		@contacts.display do |selection|
-		puts "#{@first_name}" if selection == 1
-		puts "#{@last_name}" if selection == 2
-		puts "#{@email}" if selection == 3
-		puts "#{@email}" if selection == 4
-		end
-	end
-
 
 end
