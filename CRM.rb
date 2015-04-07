@@ -110,7 +110,7 @@ class CRM # view
     print "Enter the ID of the user you would like to find: "
     contact_id = gets.chomp.to_i
     contact = @rolodex.find(contact_id)
-    puts contact
+    puts contact.to_s
     main_menu
   end
 
